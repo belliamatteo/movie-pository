@@ -11,20 +11,27 @@
 
     <title>Document</title>
 </head>
-<body>
-    <!-- <script type="module">
-        async import {film} from "./app.js";
-        window.cercaFilm = film;
-    </script> -->
-    <script>
-        window.onload = async function () {
-            const cercaFilm = await import('./app.js');
-            cercaFilm.film();
-        }
-    </script>
-    <h1>elenco film</h1>
+<script type="module">
+    import {film, ricercaRis} from "./js/app.js"
+    window.film = film;
+    window.ricercaRis = ricercaRis;
+</script>
+<body onload="film()">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <ul id="headder">
+                <li class="titolo">
+                    <h1>elenco film</h1>
+                </li>
+                <li classe="cerca">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="barraRicerca">
+                    <button class="btn btn-outline-success" type="submit" onclick="ricercaRis()">Search</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
-        <div class = "row" id = "container">
+        <div class = "row" id ="container">
 
         </div>
     </div>

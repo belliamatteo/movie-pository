@@ -1,6 +1,32 @@
+let ricerca = "blade";
 export const film = async() => {
     const promise = fetch (
-        'http://www.omdbapi.com/?s=%27blade%20runner%27&apikey=d99eb7c1'
+        'http://www.omdbapi.com/?s=%27blade%27&apikey=d99eb7c1'
+    );
+    promise
+        .then ( res => {
+            if(res) {
+                const ris = res.json();
+                return ris;
+            };
+        })
+        .then (resjson => {
+            console.log(resjson);
+            resjson.Search.forEach(stampa);
+        })
+        .catch(err => {
+            console.error(err);
+        })
+}
+export const ricercaRis = () => {
+    document.getElementById("container").innerHTML = "";
+    ricerca = document.getElementById('barraRicerca').value;
+    ricerca = ricerca.toLowerCase();
+    filmRicerca();
+}
+export const filmRicerca = async() => {
+    const promise = fetch (
+        'http://www.omdbapi.com/?s=%27'+ ricerca +'%27&apikey=d99eb7c1'
     );
     promise
         .then ( res => {
@@ -28,7 +54,7 @@ const stampa = (item, i) => {
     const titolo = document.createElement('h4');
     const anno = document.createElement('h4');
     const genere = document.createElement('h4');
-    const cont = document.getElementById('container');
+    const cont = document.getElementById("container");
 
     div.setAttribute("class", "col");
     capo.setAttribute("class", "w-100");
