@@ -1,23 +1,4 @@
 let ricerca = "blade";
-export const film = async() => {
-    const promise = fetch (
-        'http://www.omdbapi.com/?s=%27blade%27&apikey=d99eb7c1'
-    );
-    promise
-        .then ( res => {
-            if(res) {
-                const ris = res.json();
-                return ris;
-            };
-        })
-        .then (resjson => {
-            console.log(resjson);
-            resjson.Search.forEach(stampa);
-        })
-        .catch(err => {
-            console.error(err);
-        })
-}
 export const ricercaRis = () => {
     document.getElementById("container").innerHTML = "";
     ricerca = document.getElementById('barraRicerca').value;
